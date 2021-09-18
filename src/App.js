@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+import wordList from "./resources/words.json";
 
 const MAX_TYPED_KEYS = 30;
 
+const getWord = () => {
+  const index = Math.floor(Math.random() * wordList.length);
+  const word = wordList[index];
+  return word.toLocaleLowerCase();
+};
+
 const App = () => {
+  console.log("word", getWord());
   const [typedKeys, setTypedKeys] = useState([]);
 
   const handleKeyDown = (event) => {

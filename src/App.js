@@ -41,7 +41,7 @@ const App = () => {
 
   useEffect(() => {
     const wordFromValidKeys = validKeys.join("").toLocaleLowerCase();
-    if (word === wordFromValidKeys) {
+    if (word && word === wordFromValidKeys) {
       //buscar um nova palavra
       let newWord = null;
       do {
@@ -83,9 +83,9 @@ const App = () => {
 
       <div className="completed-words">
         <ol>
-          <li>papibaquígrafo</li>
-          <li>Genoveva</li>
-          <li>jurubeba</li>
+          {completedWords.map((word) => {
+            return <li key={word}>{word}</li>;
+          })}
         </ol>
       </div>
     </div>

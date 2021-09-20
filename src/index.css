@@ -60,3 +60,13 @@ body {
   width: 600px;
   overflow: hidden;
 }
+.countkeys {
+  font-size: 1.5rem;
+  color: #fb5;
+  margin-top: 3rem;
+}
+.valid {
+  font-size: 1.5rem;
+  color: rgba(90, 180, 38, 0.884);
+  margin-top: 3rem;
+}

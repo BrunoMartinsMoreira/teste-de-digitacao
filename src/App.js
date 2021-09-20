@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import wordList from "./resources/words.json";
 
-const MAX_TYPED_KEYS = 30;
+const MAX_TYPED_KEYS = 1000;
 
 const getWord = () => {
   const index = Math.floor(Math.random() * wordList.length);
@@ -34,6 +34,8 @@ const App = () => {
   const [validKeys, setValidKeys] = useState([]);
   const [completedWords, setCompletedWords] = useState([]);
   const [word, setWord] = useState("");
+  //const [countValids, setCountValids] = useState(0);
+  const countKeys = Number(typedKeys.length);
 
   useEffect(() => {
     setWord(getWord());
@@ -47,7 +49,6 @@ const App = () => {
       do {
         newWord = getWord();
       } while (completedWords.includes(newWord));
-
       setWord(newWord);
       //limpar o array validKeys
       setValidKeys([]);
@@ -60,8 +61,8 @@ const App = () => {
     event.preventDefault();
     const { key } = event;
 
-    setTypedKeys(
-      (prevTypedKeys) => [...prevTypedKeys, key].slice(MAX_TYPED_KEYS * -1), // * -1 pra ser -30
+    setTypedKeys((prevTypedKeys) =>
+      [...prevTypedKeys, key].slice(MAX_TYPED_KEYS * -1),
     );
 
     if (isValidKey(key, word)) {
@@ -79,7 +80,8 @@ const App = () => {
         <Word word={word} validKeys={validKeys} />
       </div>
 
-      <div className="typed-keys">{typedKeys ? typedKeys.join(" ") : null}</div>
+      {/*<div className="typed-keys">{typedKeys ? typedKeys.join(" ") : null}</div>*/}
+      <div className="countkeys">Total de teclas digitadas: {countKeys}</div>
 
       <div className="completed-words">
         <ol>
